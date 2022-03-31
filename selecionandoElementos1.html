@@ -10,7 +10,30 @@
     <div>Segundo</div>
     <div class="terceiro ultimo">.terceiro .ultimo</div>
     <script>              
-        // ...
+        document.getElementById('primeiro').classList.add('destaque')
+        // 1 atribuindo um conjunto de divs a uma constante
+        const divs = document.getElementsByTagName('div')
+        // 1.2 percorrendo o array e removendo a classe destaque atraves do atributo remove
+        Array.from(divs).forEach(e => e.classList.remove('destaque'))
+
+        // 2. aplicando diretamente ao array
+        const divsArray  = [...divs]
+        divsArray.forEach(e => e.classList.add('destaque'))
+        // 3.  modificando ultimos elementos
+        const ultimosElementos = document.getElementsByClassName('ultimo')
+
+        // 3.1 utilizando o for
+        for(let e of ultimosElementos){
+            e.classList.remove('destaque')
+        }
+
+        // 3.2 utilizando o metodo funcional
+
+        const ultimosElementosArrays = [...ultimosElementos]
+        ultimosElementosArrays.forEach(e => e.classList.remove('destaque'))
+
+
+        
     </script>
 </body>
 </html>

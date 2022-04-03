@@ -22,7 +22,41 @@
         <p>Fim</p>
     </div>
     <script>
-        // ...
+        function log(){
+            return console.log(this);
+        }
+
+        HTMLCollection.prototype.log = log;
+        HTMLElement.prototype.log = log;
+        NodeList.prototype.log = log;
+        Node.prototype.log = log;
+
+        const list = document.querySelector('div ul');
+        list.parentNode.log() // acessa o pai da lista
+        list.childNodes.log() // tras os elementos filhos, mas também inclui os espaçamento de texto
+
+        const primeiro = list.firstChild;
+        primeiro.log(); // pega o primeiro elemento da lists, mesmo que seja um espaçamento
+        primeiro.nextSibling.log(); // pega o próxim elemento irmão
+
+        const ultimo = list.lastChild;
+        ultimo.log();// pega ultimo elemeno filho 
+        ultimo.previousSibling.log(); // pega elemento anterior ao seleionado
+
+        // formas mais indicadas de selecionar um elemento
+
+        list.children.log(); // pega os elementos filhos, desconsiderando espaçamentos de texto
+        list.firstElementChild.log(); // pega primeiro elemento filho, desconsiderando os espaçamentos
+        list.lastElementChild.log(); // pega ultimo elemento, desconsiderando espaçamento de texto
+
+        // misturando formas de seleção
+
+        list.parentNode.previousSibling.log();
+
+        //ideal 
+
+        documento.querySelectorAll('div ul li');
+
     </script>
 </body>
 
